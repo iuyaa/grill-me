@@ -1,0 +1,36 @@
+schema_version: 1
+session:
+  id: topic-slug
+  title: Session title
+  mode: plan
+  depth: bounded
+  pressure: normal
+  created_at: null
+  updated_at: null
+status:
+  design: DRAFT
+  publication: UNPUBLISHED
+  conformance: UNCHECKED
+destination:
+  outcome: ""
+  observer: ""
+  in_scope: []
+  out_of_scope: []
+facts: []
+assumptions: []
+decisions: []
+frontier: []
+blocked: []
+deferred: []
+artifacts:
+  map: null
+  spec: null
+  published: []
+  check_reports: []
+approval:
+  status: unapproved
+  approved_at: null
+  approved_by: null
+  baseline_version: null
+  baseline_digest: null
+next_safe_action: ""

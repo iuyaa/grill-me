@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grill"
+  short_description: "Clarify decisions, publish specs, and verify implementation"
+  default_prompt: "Use $grill to clarify this idea into an approved, verifiable plan."

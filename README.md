@@ -19,15 +19,9 @@ git clone https://github.com/iuyaa/grill-me.git
 
 也可以把 `grill/` 放入项目自己的 Skill 目录，仅对该项目生效。
 
-### 可选：安装上游 `grilling`
+### 已内置上游 `grilling`
 
-Grill 自带决策引擎，不安装外部 Skill 也能运行。如果已安装 Matt Pocock 的 [`grilling`](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)，`plan` 和 `map` 可以复用它执行 interrogation rounds：
-
-```bash
-npx skills@latest add mattpocock/skills --skill grilling -g
-```
-
-也可以从 [`grilling` 安装页](https://skills.sh/mattpocock/skills/grilling)查看并选择目标 Agent。缺少该 Skill 时，Grill 会自动回退到本地 `decision-engine`，不会中断。
+Grill 已将 Matt Pocock 的 [`grilling`](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)作为受约束的 interrogation primitive 内置在 [`upstream-grilling.md`](grill/references/upstream-grilling.md) 中，用户不需要额外安装。GitHub Action 每周检查上游；发现变化时只创建 PR，审核合并后才会影响用户。
 
 ## 使用
 

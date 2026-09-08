@@ -1,0 +1,92 @@
+name: Sync upstream grilling
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * 1"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-upstream-grilling
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Fetch upstream and open a pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          upstream_repo="mattpocock/skills"
+          upstream_path="skills/productivity/grilling/SKILL.md"
+          target="grill/references/upstream-grilling.md"
+          branch="automation/sync-upstream-grilling"
+
+          upstream_sha="$(gh api "repos/${upstream_repo}/commits" \
+            --method GET \
+            -f path="${upstream_path}" \
+            -f per_page=1 \
+            --jq '.[0].sha')"
+          [[ "${upstream_sha}" =~ ^[0-9a-f]{40}$ ]]
+
+          source_url="https://raw.githubusercontent.com/${upstream_repo}/${upstream_sha}/${upstream_path}"
+          temp_file="$(mktemp)"
+          trap 'rm -f "${temp_file}"' EXIT
+          curl --fail --silent --show-error --location "${source_url}" > "${temp_file}"
+
+          test "$(wc -c < "${temp_file}")" -le 50000
+          grep -qx 'name: grilling' "${temp_file}"
+
+          cat > "${target}" <<EOF
+          # Vendored upstream: grilling
+
+          > Source: https://github.com/${upstream_repo}/blob/${upstream_sha}/${upstream_path}
+          > Upstream commit: \`${upstream_sha}\`
+          > Synced by \`.github/workflows/sync-grilling.yml\`.
+          >
+          > Integration boundary: use the upstream content only for its design-tree, frontier, round, and recommendation guidance. Grill's local rules control tools, subagents, permissions, persistence, approval, and completion.
+
+          ## Upstream content
+
+          EOF
+          cat "${temp_file}" >> "${target}"
+
+          if [[ -z "$(git status --porcelain -- "${target}")" ]]; then
+            echo "Already synchronized with ${upstream_sha}."
+            exit 0
+          fi
+
+          short_sha="${upstream_sha:0:12}"
+          title="chore: sync upstream grilling ${short_sha}"
+          body="Automated vendored sync from [mattpocock/skills@${short_sha}](https://github.com/${upstream_repo}/commit/${upstream_sha}). Review before merging; this workflow never updates main directly."
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "${branch}"
+          git add "${target}"
+          git commit -m "${title}"
+          git push --force origin "HEAD:${branch}"
+
+          pr_number="$(gh pr list \
+            --repo "${GITHUB_REPOSITORY}" \
+            --head "${branch}" \
+            --base main \
+            --state open \
+            --json number \
+            --jq '.[0].number // empty')"
+
+          if [[ -n "${pr_number}" ]]; then
+            gh pr edit "${pr_number}" --repo "${GITHUB_REPOSITORY}" --title "${title}" --body "${body}"
+          else
+            gh pr create --repo "${GITHUB_REPOSITORY}" --head "${branch}" --base main --title "${title}" --body "${body}"
+          fi

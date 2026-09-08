@@ -1,6 +1,6 @@
 # Dependency-aware decision engine
 
-Use this protocol for `plan` and `map`, whether questioning is performed locally or by an installed `grilling` skill.
+Use this protocol for `plan` and `map` alongside the vendored [upstream-grilling.md](upstream-grilling.md). The upstream reference supplies the basic design-tree and frontier primitive; this protocol controls its integration and completion rules.
 
 ## Separate facts, assumptions, and decisions
 

@@ -1,6 +1,6 @@
 # Third-party notices
 
-This skill's decision-frontier and wayfinding design is influenced by Matt Pocock's `grilling`, `grill-with-docs`, and `wayfinder` skills. Its depth classification, approval gate, and spec-review design are influenced by the `brainstorming` skill from Jesse Vincent's Superpowers project. The local implementation is adapted rather than requiring either project at runtime.
+This skill vendors Matt Pocock's `grilling` instructions in `references/upstream-grilling.md` and adapts ideas from `grill-with-docs` and `wayfinder`. Its depth classification, approval gate, and spec-review design are influenced by the `brainstorming` skill from Jesse Vincent's Superpowers project. No external skill installation is required at runtime.
 
 Sources reviewed for this adaptation:
 

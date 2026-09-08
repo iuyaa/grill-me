@@ -32,7 +32,7 @@ If no mode is explicit, use `check` for conformance requests, `resume` for a nam
 
 ## Run a decision session
 
-For `plan` or `map`, read [decision-engine.md](references/decision-engine.md). If a compatible `grilling` skill is installed, it may provide the interrogation rounds, but the routing, persistence, approval, and evidence rules in this skill remain controlling. Do not fail or ask the user to install a dependency when it is absent; use the local decision-engine protocol.
+For `plan` or `map`, read [decision-engine.md](references/decision-engine.md) and the vendored [upstream-grilling.md](references/upstream-grilling.md). Use the upstream content only for its interrogation primitive; the routing, tools, persistence, approval, and evidence rules in this skill remain controlling. Never require or invoke a separately installed `grilling` skill.
 
 1. Inspect context and establish a fact ledger before asking detailed questions.
 2. Frame the destination and explicit scope.

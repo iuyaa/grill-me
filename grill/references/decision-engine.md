@@ -45,6 +45,8 @@ The **frontier** is every open decision whose decision prerequisites are decided
 
 Prefer the host's structured user-input UI when it is available in the current mode and the frontier slice fits its question and option limits. Put the recommended option first. Otherwise use the text question format below; do not switch modes solely to obtain a menu.
 
+Give every option a short title and a brief explanation of what choosing it means and its main benefit, cost, or trade-off. Use separate title/label and description fields when the host supports them. If the host accepts only option strings, include both in each string, separated by a newline when supported or a short separator otherwise. In text questions, put each explanation directly below its option title.
+
 Use this shape for each question, adapting detail to the decision:
 
 ```text
@@ -52,9 +54,14 @@ Use this shape for each question, adapting detail to the decision:
 
 Which audience should the first release serve?
 
-A. Internal sales only
+A. Internal sales only (Recommended)
+   Keeps the first release focused on validating the internal workflow with a simpler access model.
+
 B. Internal sales and partners
+   Supports collaboration, but requires partner access controls and lead-sharing rules.
+
 C. All customers
+   Tests customer self-service, but adds onboarding, support, and access-control work to the first release.
 
 ➡️ Recommendation: A.
 

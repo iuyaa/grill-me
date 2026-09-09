@@ -1,6 +1,6 @@
 ---
 name: grill
-description: "Turn fuzzy goals, plans, and implementation questions into explicit, approved, verifiable decisions. Use when the user invokes /grill or $grill, asks to be grilled, needs a large goal decomposed, wants a decision session resumed or published, or wants implementation checked against an approved plan."
+description: "Clarify requirements and stress-test plans through targeted questions in dependency order. Use when key gaps, ambiguities, or conflicts in a request cannot be resolved from available context or authorized investigation and require user input or a decision; when the user wants assumptions, risks, or tradeoffs challenged; when a large goal needs decomposition into dependent decisions; or when resuming or publishing a decision session or checking implementation against an approved plan."
 ---
 
 # Grill

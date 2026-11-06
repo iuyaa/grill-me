@@ -5,6 +5,7 @@ session:
   mode: plan
   depth: bounded
   pressure: normal
+  questioning: active
   created_at: null
   updated_at: null
 status:
@@ -14,8 +15,10 @@ status:
 destination:
   outcome: ""
   observer: ""
+  purpose: ""
   in_scope: []
   out_of_scope: []
+  anti_goals: []
 facts: []
 assumptions: []
 decisions: []

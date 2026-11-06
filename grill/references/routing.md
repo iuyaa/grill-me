@@ -5,21 +5,32 @@ Use two independent classifications:
 - **Mode** says what outcome is needed: `map`, `plan`, `resume`, `status`, `publish`, or `check`.
 - **Depth** says how much ceremony and durable output are justified: `probe`, `bounded`, `architectural`, or `portfolio`.
 
-Announce both before the first decision question:
+Use these classifications internally and in checkpoints. Explain their effect in the user's terms when it matters:
 
 ```text
-Mode: PLAN · Depth: BOUNDED · Reason: this changes one existing flow and can be approved in chat.
+This changes one existing flow, so a short design here should be enough.
 ```
 
-The announcement is a reversible routing decision, not a question. The user may override it.
+The user may override routing. Lead with the work, not process labels. Say when discovered scope changes the intended output or persistence.
 
 For `resume`, `status`, and `publish`, inherit the persisted session depth. For `check`, classify depth from the approved baseline and implementation surface. If either is missing, report `Depth: UNDETERMINED` as a transient preflight result rather than misclassifying missing inputs as `probe`.
+
+## Enter and leave questioning
+
+On implicit activation, inspect the supplied context first. Do not start a session for an already-clear, straightforward task. When material gaps do require a conversation, a brief one-time offer to proceed with stated defaults is appropriate; do not offer it automatically when the user explicitly requested Grill or a design discussion.
+
+If the user asks to stop questioning, honor that even in an explicitly invoked session:
+
+- Stop the interview. Briefly state what is settled, what remains unknown, and any material defaults the user delegated to you.
+- Continue the normal workflow only if the user has requested that work, and only within that scope and delegation. A bare "stop" or cancellation is not an implementation request. A missing essential fact, access, or authority still blocks the affected action; do not invent it or resume a broad interview.
+- Do not mark unanswered decisions as accepted or a draft as `APPROVED`. Approval of one recommendation is not approval of an unseen design. Preserve earlier approved baselines.
+- If state already exists, set `session.questioning: stopped`, retain unresolved nodes and approval state, and record the next authorized action. Do not create persistence solely to record an opt-out. Explicit resumption reactivates questioning; ordinary later tasks do not.
 
 ## Mode precedence
 
 1. Honor an explicit subcommand.
 2. Infer an explicit natural-language action such as "continue last time", "publish the ADR", or "check this implementation".
-3. Resume a uniquely identifiable active session when that is clearly the subject.
+3. Resume a uniquely identifiable active session when that is clearly the subject; do not implicitly resume one whose questioning was stopped.
 4. Classify the supplied problem by scope.
 5. Default to `plan` when evidence does not justify a heavier route.
 
@@ -67,7 +78,7 @@ Pressure changes interaction style, not correctness:
 
 | Pressure | Frontier slice | Challenge style |
 | --- | --- | --- |
-| `light` | 1–2 decisions | Lead with a practical default; challenge only material assumptions |
+| `light` | 1–2 decisions | Keep intent questions open; offer practical defaults for concrete choices and challenge material assumptions |
 | `normal` | 2–4 related decisions | Explain primary trade-offs and failure modes |
 | `hard` | Entire manageable frontier | Stress-test assumptions, counterexamples, reversibility, and edge cases |
 

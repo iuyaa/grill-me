@@ -1,0 +1,21 @@
+{
+  "files": {
+    "agents/openai.yaml": "05264d3fad6aaac99a89af335d3d25dd72e2574993f64666e29728d206a7a4d0",
+    "assets/templates/check-report.md": "9a9fdee8b444b924f1d319aae0db91e250a1c015e5f595c7b82ef56853f69993",
+    "assets/templates/checkpoint.yaml": "226f7dae5562f2f23b21b319a83525cb6147b482fecc0c664ebd2606df9a659c",
+    "assets/templates/decision-map.md": "524f5e5365ebacb8907f5e02bf896ffb2582b4d65aa2a4f48ad2a59464aac37d",
+    "assets/templates/decision-ticket.md": "84b67b696c9c3417e37b1f7027f235e37cf7928428dd0a9de3623070cd84b4d1",
+    "assets/templates/spec.md": "9aad58773d6dff28273bd2fc3bdcbecfc2fa648320644c84802aa109b0c41a84",
+    "references/check.md": "20263b6a68b9b8532169f57e7640856d766bd1e9d7dba4ead57a37068c95bfca",
+    "references/decision-engine.md": "c427997b794bfbeccf1145c7dbd9e94d0c676642ef022f58351094a915ee1476",
+    "references/map.md": "6db80663e96d5e374f9a0942f4ade739ed2b71d953a890492c9abd2418c240dd",
+    "references/plan.md": "f9cf0f7f7496f9bad9a11f0cb3ccce259e324ca374d86cfd742c055590f16a4f",
+    "references/publish.md": "5ce70e7b928ce26f6e79ee6e281a93c06a022dfde4093e78842b8162691c8a5d",
+    "references/routing.md": "788def7360b19e836d09ec16e95c1b4dd6ba5360bfca2676f0c012deed35d94b",
+    "references/session-state.md": "6ad4c1497df9e380ae6791229ede3a0c9dcc2061e0dad6daacdabd0eae26a028",
+    "references/updates.md": "5846b098d8a4a58836ed842e3a289e87d7a5f50ad64e2e8f0f2eebcd115dfecf",
+    "references/upstream-grilling.md": "abc1de0eca8903c08f9bf9e7a81696894e1411ea5886bb61b7cb043c5c7419ae",
+    "SKILL.md": "0ce49a6522c47ac978cf0338012c10686739b5dc36d9218b88e14546466ca5bb",
+    "THIRD_PARTY_NOTICES.md": "70c4addd3af27db3a77be5fce9dd9826dc4572250a43e09de37811a26b10b2f8"
+  }
+}

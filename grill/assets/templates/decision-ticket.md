@@ -22,4 +22,4 @@ Describe genuinely distinct options, trade-offs, and the recommended answer.
 
 ## Resolution
 
-Record the user's decision, rationale, material impact, and resolution date. Leave this section unapproved while the ticket is open.
+Record the decision, whether it was made by the user or the agent under explicit delegation, the delegation scope when applicable, rationale, material impact, and resolution date. Leave unresolved proposals open. Resolving a ticket does not approve the final design.

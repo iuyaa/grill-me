@@ -26,10 +26,10 @@ Use the templates under `assets/templates/`. Adapt existing files rather than ov
 
 The checkpoint is operational state, not the final project source of truth. It should contain:
 
-- session identity, mode, depth, pressure, and state;
-- destination and scope boundary;
+- session identity, mode, depth, pressure, questioning status, and state;
+- destination, purpose, scope boundary, and material anti-goals;
 - fact ledger with evidence pointers;
-- decision graph and current frontier;
+- decision graph, decision ownership and delegation evidence, and current frontier;
 - deferred and out-of-scope nodes;
 - artifact paths and versions;
 - approval status, exact baseline version, and digest when available;
@@ -54,6 +54,8 @@ conformance:  UNCHECKED → CHECKED
 - `CHECKED`: an implementation was compared with the approved baseline.
 
 Publishing requires `design: APPROVED`. Checking requires an approved baseline but does not require publication.
+
+`session.questioning` tracks `active` or `stopped` independently of these axes. Older checkpoints without this field are treated as active for compatibility, subject to the current user's instructions. Stopping questioning preserves the actual draft/approval state and unresolved decisions; it grants neither approval nor implementation authority. Only explicit resumption of that session reactivates questioning. A `status` request does not reactivate it.
 
 Implementation is an external lifecycle event, not permission granted by the checkpoint. Record implementation references when observed, but do not infer authorization from the state.
 
@@ -81,9 +83,9 @@ On `resume`:
 1. Locate the named or uniquely relevant session.
 2. Reload its files and verify referenced artifacts still exist.
 3. Reinspect drift-prone facts when cheap and material.
-4. Summarize the destination, resolved decisions, current frontier, blockers, and next action.
-5. Continue from the frontier; do not replay settled questions unless evidence or scope changed.
+4. Summarize the destination, resolved decisions and their ownership, current frontier, blockers, and next action.
+5. On explicit resumption, set `session.questioning: active` and continue from the frontier; do not replay settled questions unless evidence or scope changed. Do not resume a stopped interview merely because a later task mentions the same project.
 
-On `status`, remain read-only. Report counts and named items for `decided`, `ready`, `blocked`, `deferred`, and `out_of_scope`, plus approval and artifact versions.
+On `status`, remain read-only. Report questioning status and counts and named items for `decided`, `ready`, `blocked`, `deferred`, and `out_of_scope`, plus approval and artifact versions.
 
 Before updating state, re-read the current file. If it changed concurrently, merge only when identities and versions make the merge unambiguous; otherwise stop and report the conflict.

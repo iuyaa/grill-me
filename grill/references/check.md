@@ -9,9 +9,11 @@ Identify:
 - the approved spec or exact approved chat design;
 - its version and digest when persisted;
 - the implementation scope and revision being checked;
-- the acceptance criteria and explicit non-goals.
+- the acceptance criteria, explicit non-goals, and material anti-goals.
 
 If there is no approved baseline, return `MISSING_BASELINE`. Offer to reconstruct a draft through `plan`, but do not pretend a conversation fragment is approved. If a persisted spec digest differs from its approval record, return `BASELINE_CHANGED` and resolve which version is authoritative before judging implementation.
+
+An opt-out from questioning, delegation of implementation details, or acceptance of individual recommendations is not an approved baseline. Preserve that distinction even if implementation has since begun.
 
 ## Evidence ledger
 

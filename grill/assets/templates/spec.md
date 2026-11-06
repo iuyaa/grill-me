@@ -9,7 +9,7 @@
 
 ## Destination
 
-Describe the intended outcome, observer, and success boundary.
+Describe the intended outcome, observer, purpose, and success boundary. Distinguish stated intent from unconfirmed interpretation.
 
 ## Context and evidence
 
@@ -21,13 +21,17 @@ List relevant facts with source, file, command, or runtime evidence pointers.
 
 ### Out of scope
 
+### Anti-goals, when material
+
+Name outcomes that would count as failure even if the feature worked; connect them to constraints or acceptance criteria.
+
 ## Decisions
 
-Record approved decisions, rationale, reversibility, and material impact.
+Distinguish user decisions, agent choices under explicit delegation, and proposals awaiting approval. Record rationale, reversibility, material impact, and the scope of any delegation. Final design approval remains separate.
 
 ## Selected design
 
-Describe the coherent design at the depth justified by the change.
+Describe the coherent design at the depth justified by the change. Note meaningful alternatives and why this approach was selected; identify details left to the implementer.
 
 ## Interfaces and consumers
 

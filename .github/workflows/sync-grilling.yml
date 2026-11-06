@@ -66,6 +66,9 @@ jobs:
             exit 0
           fi
 
+          python3 scripts/package_skill.py --bump-patch
+          python3 scripts/package_skill.py --check
+
           short_sha="${upstream_sha:0:12}"
           title="chore: sync upstream grilling ${short_sha}"
           body="Automated vendored sync from [mattpocock/skills@${short_sha}](https://github.com/${upstream_repo}/commit/${upstream_sha}). Review before merging; this workflow never updates main directly."
@@ -73,7 +76,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B "${branch}"
-          git add "${target}"
+          git add "${target}" grill/SKILL.md grill/manifest.json
           git commit -m "${title}"
           git push --force origin "HEAD:${branch}"
 

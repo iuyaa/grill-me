@@ -33,6 +33,10 @@ Before presenting the exact spec for approval, check it for:
 
 Correct mechanical inconsistencies. Return substantive gaps to the decision frontier; do not decide them on the user's behalf.
 
+For an architectural spec, also read it as a capable implementer who cannot consult the original conversation: which unanswered questions would force a consequential guess before planning? Ignore wording preferences and details explicitly left to the implementer. This builder check can be done inline; when a fresh reviewer is available and delegation is authorized, give it only the spec, necessary project facts, and that question, not your preferred conclusions.
+
+Triage the findings before returning to the user: fill in answers already present in the conversation or project; settle minor implementation details within delegated scope and label them as agent choices; bring only consequential user-owned questions in one prioritized follow-up. Keep dependent questions ordered rather than forcing them into the same round. Avoid repeated review loops; another pass is warranted only if the answers materially change the design. Then present the updated exact design for approval, identifying agent-made choices. A bounded chat design needs only a proportionate inline check.
+
 ## Exact approval and versioning
 
 Ask the user to approve the exact reviewed content. On approval:

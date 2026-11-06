@@ -10,15 +10,18 @@ State the destination in one or two sentences:
 
 - what will be true when this plan succeeds;
 - who or what observes that success;
+- why the outcome matters, when known;
 - the current scope boundary.
 
 Then use the dependency-aware protocol in [decision-engine.md](decision-engine.md).
+
+Once intent is understood, discuss meaningful implementation alternatives before treating one as the design. Ground them in the existing project, state trade-offs and a recommendation, and honor explicit delegation. If only one approach is sensible, explain why briefly rather than inventing alternatives. A separate message is useful only when an unresolved choice needs an answer.
 
 ## Scale by depth
 
 ### Probe
 
-Answer a feasibility question as cheaply as correctness permits. A read-only inspection does not need another permission round. Announce and obtain authorization before any side-effectful experiment. Report:
+Answer a feasibility question as cheaply as correctness permits. A read-only inspection does not need another permission round. Confirm the experiment's scope before side effects unless the user's request already authorizes that experiment. Use only the checks needed to answer the question reliably; a prototype does not need the full production workflow. Report:
 
 - the question tested;
 - evidence gathered;
@@ -32,7 +35,7 @@ Any created experimental implementation is throwaway and cannot silently become 
 
 Confirm that an existing flow can be inspected and the change stays within a small, understood boundary. Present a concise design in chat with:
 
-- intended behavior and non-goals;
+- intended behavior, non-goals, and material anti-goals;
 - affected components or files at the level currently knowable;
 - error and edge behavior;
 - verification approach.
@@ -60,11 +63,13 @@ Draft the spec from `assets/templates/spec.md`, run the review in [publish.md](p
 
 An approved plan must identify:
 
-- its destination and non-goals;
+- its destination, purpose, non-goals, and material anti-goals;
 - facts and their evidence;
-- decisions and rationale;
+- user decisions, delegated agent choices, and their rationale;
 - unresolved non-blocking deferrals;
 - observable acceptance criteria;
 - baseline version or exact approved chat design.
 
 Approval does not itself authorize implementation unless the user already requested implementation. Even then, hand control back after approval so the implementation phase starts from the approved baseline.
+
+If the user ends questioning instead, follow [routing.md](routing.md). Report the session as stopped with its actual approval state, not as a completed approved plan.

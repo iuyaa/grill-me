@@ -1,13 +1,17 @@
 # Third-party notices
 
-This skill vendors Matt Pocock's `grilling` instructions in `references/upstream-grilling.md` and adapts ideas from `grill-with-docs` and `wayfinder`. Its depth classification, approval gate, and spec-review design are influenced by the `brainstorming` skill from Jesse Vincent's Superpowers project. No external skill installation is required at runtime.
+This skill vendors Matt Pocock's `grilling` instructions in `references/upstream-grilling.md` and adapts ideas from `grill-with-docs` and `wayfinder`. Its depth classification and approval boundary were influenced by Superpowers `brainstorming` v6.3.0. The v7.0.2 adaptation adds intent-first questioning, selective questions, progressive playback, explicit decision delegation, interview exit, anti-goals, and a proportionate builder check. No external skill installation is required at runtime.
 
 Sources reviewed for this adaptation:
 
-- https://github.com/mattpocock/skills/blob/85f83d3fde1d3a90d5c9a657f6998c79a6c37308/skills/productivity/grilling/SKILL.md
+- https://github.com/mattpocock/skills/blob/7739eaed7f8f3915437a8def198a6d0d7206dbc7/skills/productivity/grilling/SKILL.md
 - https://github.com/mattpocock/skills/blob/447ca70872026d5b79d6073a546dac082117fed7/skills/engineering/grill-with-docs/SKILL.md
 - https://github.com/mattpocock/skills/blob/321658273cb1d20b76026717d027d505790106d4/skills/engineering/wayfinder/SKILL.md
 - https://github.com/obra/superpowers/blob/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/brainstorming/SKILL.md
+- https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/skills/brainstorming/SKILL.md
+- https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/skills/brainstorming/builder-check-prompt.md
+
+Grill retains its own dependency-frontier batches, lightweight chat designs, optional inline review, and authorization rules. It does not adopt mandatory one-question rounds, document commits, `writing-plans`, browser tooling, or unconditional subagent dispatch. Matt's affirmative-answer wording applies to concrete recommendations, not open intent questions or ambiguous answers to a batch.
 
 ## Matt Pocock skills
 
